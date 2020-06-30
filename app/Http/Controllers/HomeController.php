@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,35 +26,20 @@ class HomeController extends Controller
     public function index()
     {
 
-        // $users = [
-        //     "Guillaume",
-        //     "zakaria",
-        //     "Frank",
-        //     "Hussein"
-        // ];
-
-    //     $users = [
-    //         [
-    //         "id" => "1",
-    //         "name" => "lionel",
-    //         "email" => "lionel@test.com"
-    //         ],
-    //         [
-    //             "id" => "2",
-    //             "name" => "james",
-    //             "email" => "james@test.com"
-    //             ]
-    // ];
-
-
         $users = DB::table('users')->get();
         $skills = DB::table("skills")->get();
+        // $skills_names = DB::table("level_skill_user")->join('skills', "level_skill_user.skill_id", "=", "skills.id")->select("skills.name")->get();
+
+        $skills_user_level = DB::table("level_skill_user")->get();
+
+
 
         return view('home', [
             "title" => "Titre de la carte",
             "content" => "Content de la carte",
             "users" => $users,
-            "skills" => $skills
+            "skills" => $skills,
+            "skills_level_user" => $skills_user_level
         ]);
     }
 
