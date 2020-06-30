@@ -28,7 +28,7 @@ class HomeController extends Controller
 
         $users = DB::table('users')->get();
         $skills = DB::table("skills")->get();
-        // $skills_names = DB::table("level_skill_user")->join('skills', "level_skill_user.skill_id", "=", "skills.id")->select("skills.name")->get();
+        // $skills_names = DB::table("level_skill_user")->join('skills', "level_skill_user.skill_id", "=", "skills.id")->select("skills.name")->get(); 
 
         $skills_user_level = DB::table("level_skill_user")->get();
 
